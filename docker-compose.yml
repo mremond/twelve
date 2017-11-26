@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  node1:
+    image: "my_app:latest"
+    environment:
+      - NODE_NAME=node@node1
+      - NODES=node@node2
+    networks:
+      main:
+        aliases:
+          - node1
+
+  node2:
+    image: "my_app:latest"
+    environment:
+      - NODE_NAME=node@node2
+      - NODES=node@node1
+    networks:
+      main:
+        aliases:
+          - node2
+
+networks:
+  main:

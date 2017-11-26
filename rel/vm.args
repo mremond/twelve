@@ -1,0 +1,5 @@
+-start_epmd false
+-proto_dist Elixir.Kubernetes.Proto
+-epmd_module Elixir.Kubernetes.Epmd
+-sname ${NODE_NAME}
+-setcookie Eu0Ku6ca
