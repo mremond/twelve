@@ -20,7 +20,7 @@ defmodule MyApp.Mixfile do
 
   defp deps do
     [
-       {:distillery, "~> 1.4.0"}
+       {:distillery, "~> 1.5.0"}
     ]
   end
 
