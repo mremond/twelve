@@ -11,18 +11,16 @@ defmodule MyApp do
   end
 
 	def loop do
-		monitor_nodes()
+		# monitor_nodes()
 		loop2()
 	end
 
-	defp loop2 do
+	def loop2 do
 		receive do
-			event ->
-				IO.puts "receive event #{inspect event}"
+			{:job, id} ->
+				IO.puts "Executing job ID #{id} on node #{inspect Node.self}"
+				:timer.sleep(1000)
 		end
-#		IO.puts "ping"
-#		:timer.sleep(1000)
-#		IO.puts "#{inspect Node.ping(:'node2@MacBook-Pro-de-Mickael')}"
 		loop2()
 	end
 
@@ -54,5 +52,15 @@ defmodule MyApp do
 					String.to_atom node
 				end
 		end
+	end
+
+	defp get_active_nodes() do
+		node = System.get_env("NODE_NAME")
+		nodes = Node.list()
+		nodes ++ String.to_atom(node)
+	end
+
+	defp get_random_node() do
+		Enum.random get_active_nodes()
 	end
 end

@@ -19,3 +19,20 @@ docker run -it --rm -e NODE_NAME='node2' -e NODES='node1@MacBook-Pro-de-Mickael'
 ```
 
 ## Start a cluster with Docker compose
+
+```
+docker-compose up
+```
+
+## Cluster discovery (TODO)
+
+You can start a disco daemon in the cluster. It will register nodes
+for a given cluster and return the list of existing nodes, so that the
+new node can connect to them.
+
+TODO add tools to generate twelve configuration:
+- Add distillery and twelve as dependencies
+- Generate Docker file
+- Add vm.args
+- Generate Docker-compose for two nodes
+- Generate Kubernetes file
